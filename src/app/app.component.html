@@ -1,0 +1,59 @@
+
+<!---->
+<h1>{{kyrie}}</h1>
+<h1>Password Generator</h1>
+
+<div>
+<label>Enter Length x</label>
+<br>
+<!--#16:Handling Text Input -->
+<input (input)="onChangeLength($any($event.target).value)"/>
+</div>
+<!--#14:Tracking Input State -->
+<div>
+    <label>Use Letters</label>
+    <input (change)="onChangeLetters()" type="checkbox">
+</div>
+
+<div>
+    <label>Use Numbers</label>
+    <input (change)= "onChangeUseNumbers()"type="checkbox">
+</div>
+
+<div>
+    <label>Use Symbols</label>
+    <input (change) = "onChangeUseSymbols()"type="checkbox">
+</div>
+
+
+<!--#10:Event Binding-->
+<div>
+    <button [disabled] = "!password" (click)="onButtonClick()">Generate!</button>
+</div>
+<!-- #17:Generate Random Password -->
+<div>
+    <button [disabled] = "!length || !includeNumbers || !includeLetters || !includeSymbols" (click) = "onButtonClick1()">Generate 1!</button>
+</div>
+
+<!--#11:Property Binding
+[] mora da ide u bracketu
+
+    #22:Structural Directives (ngIf)
+-->
+
+
+<div *ngIf="password">
+    <label>Your Password Way 1</label>
+    <input [value]="password">
+</div>
+
+<div *ngIf="getPassword()">
+    <label>Your Password Way 2</label>
+    <input [value]="getPassword()">
+</div>
+
+<!--#12:Interpolation-->
+<div>{{password}}</div>
+<div *ngIf = "password">{{getName()}} </div>
+
+
